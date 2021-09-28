@@ -24,13 +24,13 @@
   },
   "scripts": {
     "lala": "react-scripts start",
-    "start": "yarn codegen && node server.js",
-    "build": "react-scripts build --prod",
+    "start": "node server.js",
+    "build": "yarn codegen && react-scripts build --prod",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "codegen": "apollo client:codegen --target=typescript",
     "lint": "yarn eslint src/ --ext .ts,.tsx && tsc --noEmit --skipLibCheck",
-    "heroku-postbuild": "react-scripts build --prod"
+    "heroku-postbuild": "yarn codegen && react-scripts build --prod"
   },
   "eslintConfig": {
     "extends": "react-app"
