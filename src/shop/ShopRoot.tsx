@@ -34,8 +34,10 @@ export const UserMoneyQuery = gql`
 export const ShopRoot: FC = () => {
   const { data } = useQuery<getAllItemsInShopQuery>(GetAllShopItemsQuery, { fetchPolicy: 'network-only' });
   const [{ id }] = useLocalData();
+
   const { data: userData } = useQuery<userMoneyQuery, userMoneyQueryVariables>(UserMoneyQuery, {
-    variables: { id: id },
+    variables: { id: id ?? '' },
+    skip: !id,
   });
 
   if (!id) {
